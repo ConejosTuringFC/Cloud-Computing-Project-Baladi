@@ -22,7 +22,7 @@ try:
 
     print(f"--- {titulo} ({fecha}) ---")
     print(f"Url de la imagen: {url_imagen}")
-    print(f"\nDEscripcion breve: {explicacion[:150]}...")
+    print(f"\nDEscripcion : {explicacion}")
 
 except requests.exceptions.RequestException as e:
     print(f"Error en la conexion: {e}")
