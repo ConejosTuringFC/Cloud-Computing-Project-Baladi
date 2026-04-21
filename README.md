@@ -15,33 +15,35 @@ To better understand the project's architecture, here is a breakdown of the prim
 ```python
 import requests
 
-def consultar_nasa_apod(params=None):
-    url = "https://api.nasa.gov/planetary/apod"
-    query_params = {
-        "api_key": "Key personal..."
-    }
+URL = "https://api.nasa.gov/planetary/apod"
+API_KEY = "Ly4WNI3SbtbqVch7GXNzn0MpJ5fzP2dfMBjdCzxL"
 
-    if params:
-        query_params.update(params)
+parametros = {
+    "api_key": API_KEY,
+    "thumbs": True
+}
 
-    try:
-        response = requests.get(url, params=query_params)
+try:
 
-        if response.status_code == 200:
-            return response.json() 
+    respuesta = requests.get(URL, params = parametros)
+    respuesta.raise_for_status()
 
-        else:
-            return f"Error: {response.status_code} - {response.text}"   
-            
-    except Exception as e: 
-        return f"Ocurrió un error en la conexión: {e}"
-```
+    datos = respuesta.json()
 
-Where a code request would look like this:
+    titulo = datos.get("title")
+    fecha = datos.get("date")
+    url_imagen = datos.get("url")
+    explicacion = datos.get("explanation")
 
-```python
-#PRUEBA CON LOS DATOS DE HOY
-datos_hoy = consultar_nasa_apod()
-print(f"Título de hoy: {datos_hoy.get('title')}")
-print(f"URL de la imagen: {datos_hoy.get('url')}\n")
+    print(f"--- {titulo} ({fecha}) ---")
+    print(f"Url de la imagen: {url_imagen}")
+    print(f"\nDEscripcion : {explicacion}")
+
+except requests.exceptions.RequestException as e:
+    print(f"Error en la conexion: {e}")
+
+if datos.get("media_type") == "image":
+    imagen_bits = requests.get(url_imagen).content
+    with open("foto_nasa_dia.jpg", "wb") as archivo:
+        archivo.write(imagen_bits)
 ```
