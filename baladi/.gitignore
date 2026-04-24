@@ -1,0 +1,14 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Ignorar el entorno virtual
+venv/
+env/
+.env
+
+# Ignorar archivos temporales de Python
+__pycache__/
+*.py[cod]
+
+# Ignorar base de datos local (opcional)
+db.sqlite3
+
+# Pero NO ignores tus carpetas de código o plugins
