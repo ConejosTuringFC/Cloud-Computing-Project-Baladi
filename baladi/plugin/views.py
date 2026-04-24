@@ -6,7 +6,8 @@ from datetime import datetime
 # Create your views here.
 
 def index(request):
+	data = Flux.objects.values()
 	now = datetime.now()
 	flux = Flux(now, 1.0)
 	flux.save()
-	return HttpsResponse("Este es mi microservicio")
+	return HttpsResponse(data, content_type = 'application/json')
