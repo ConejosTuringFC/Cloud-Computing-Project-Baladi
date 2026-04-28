@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('plugin/', include('baladi.plugin.urls')), # Ruta al plugin
+    path('plugin/', include('plugin.urls')), # Ruta al plugin
 ]
