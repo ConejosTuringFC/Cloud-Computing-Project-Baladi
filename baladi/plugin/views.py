@@ -8,7 +8,7 @@ from datetime import datetime
 def index(request):
 	data = Flux.objects.values()
 	now = datetime.now()
-	flux = Flux(date_time=now, flux=1.0)
+	flux = Flux(date_time=now, flux=1.0, name="hello")
 	flux.save()
 	data = list(Flux.objects.values())
 	import json
