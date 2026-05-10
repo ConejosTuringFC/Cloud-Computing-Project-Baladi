@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AstroGuesser | NASA APOD Game</title>
+    <link rel="stylesheet" href="{% static 'game/css/pagina_computo.css' %}">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>BALADÍ<span class="light">GUESSER</span></h1>
+            <p class="subtitle">Adivina el objeto astronómico del día (Fecha: {{ date }})</p>
+        </header>
+
+        <main>
+            <div class="image-viewport">
+                {% if img_url %}
+                    <img src="{{ img_url }}" alt="NASA APOD" id="apod-image">
+                {% else %}
+                    <div class="image-placeholder">CONECTANDO CON LA NASA...</div>
+                {% endif %}
+            </div>
+
+            <div class="clue-container">
+                <h3>[ TRANSMISIÓN RECEPTADA // PISTA ENCRIPTADA ]</h3>
+                <div class="explanation-box">
+                    <p>{{ explanation }}</p>
+                </div>
+            </div>
+
+            <div id="wordle-board" class="board-area">
+                </div>
+
+            <div class="input-area">
+                <input type="text" id="user-guess" placeholder="Escribe tu respuesta..." autocomplete="off">
+                <button id="send-btn">ADIVINAR</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Datos proporcionados por la API APOD de la NASA</p>
+        </footer>
+    </div>
+    <div id="game-metadata" data-title="{{ title_target }}" style="display:none;"></div> 
+
+    <script src="{% static 'game/js/main.js' %}"></script>
+</body>
+</html>

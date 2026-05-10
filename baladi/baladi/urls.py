@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('plugin/', include('plugin.urls')), # Ruta al plugin
+    path('admin/', admin.site.urls),
+    path('game/', include('game.urls')), # Ruta a la aplicación de juego
 ]
