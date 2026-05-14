@@ -1,8 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import View
 import requests
+import re
 
 # Create your views here.
+def get_target_word(raw_title: str):
+    ignored_words = {"THE", "A", "AN", "OF", "IN", "ON"}
+    words = [
+        re.sub(r'[^A-Z0-9]', '', word)
+        for word in raw_title.strip().upper().split()
+    ]
+    target = words[0] if words else "NASA"
+    if target in ignored_words and len(words) > 1:
+        target = words[1]
+    return target or "NASA"
+
 class PlayGameView(View):
     template_name = "game/play.html"
     
@@ -14,7 +26,7 @@ class PlayGameView(View):
         parametros = {
         "api_key": API_KEY,
         "thumbs": True,
-        # "date": "2006-03-03",  # Puedes cambiar esta fecha para probar con diferentes días
+        "date": "2010-03-03",  #CAMBIAMOS LA FECHA PARA PRUEBAS
         }
         
         # VARIABLES POR DEFECTO EN CASO DE QUE LA PETICIÓN LLEGUE A FALLAR (sugerencia de IA)
@@ -48,12 +60,16 @@ class PlayGameView(View):
 
         except requests.exceptions.RequestException as e:
             print(f"Error en la conexion: {e}")
+        
+        target_word = get_target_word(titulo)
+        word_length = len(target_word)
             
         context = {
             "img_url": url_imagen,
-            "title_target": titulo,
+            "title_target": target_word,
             "date":fecha,
             "explanation": explicacion,
+            "word_length": word_length,
         }
     
         return render(request, self.template_name, context)  

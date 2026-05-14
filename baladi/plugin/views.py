@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http  import HttpResponse
+from django.http import HttpResponseRedirect
 from .models import Flux, Myuser
 from .forms import MyUserForm
 from datetime import datetime
@@ -38,6 +39,22 @@ class Myuserview(View):
             
         return render(request, self.template_name, {'form': form, 'id_key': id_key})
             
+    def post(self, request,*args, **kwargs):
+        if 'cancel_page_button' in request.POST:
+            return HttpResponse("/cancelar")
+        
+        id_key = self.kwargs['id_key']
+        
+        if 'save_page_button' in request.POST:
+            try:
+                instance = Myuser.objects.get(id=id_key)
+                form = self.form_class(request.POST or None, instance=instance)
+            except Myuser.DoesNotExist:
+                form = self.form_class(request.POST)
+            if form.is_valid():
+                myuser = form.save()
+                return render(request, 'plugin/saved.html', {'myuser': myuser})
+        return HttpResponseRedirect('/')
     
     # @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):

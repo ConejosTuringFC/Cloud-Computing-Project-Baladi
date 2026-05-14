@@ -10,8 +10,8 @@
 <body>
     <div class="game-container">
         <header>
-            <h1>BALADÍ<span class="light">GUESSER</span></h1>
-            <p class="subtitle">Adivina el objeto astronómico del día (Fecha: {{ date }})</p>
+            <h1>BALADÍ<span class="light">GUESSER</span></h1>
+            <p class="subtitle">Adivina el objeto astronómico del día (Fecha: {{ date }})</p>
         </header>
 
         <main>
@@ -21,6 +21,7 @@
                 {% else %}
                     <div class="image-placeholder">CONECTANDO CON LA NASA...</div>
                 {% endif %}
+                <div class="image-overlay"></div>
             </div>
 
             <div class="clue-container">
@@ -43,7 +44,8 @@
             <p>Datos proporcionados por la API APOD de la NASA</p>
         </footer>
     </div>
-    <div id="game-metadata" data-title="{{ title_target }}" style="display:none;"></div> 
+
+    <div id="game-metadata" data-title="{{ title_target }}" data-length="{{ word_length }}" style="display:none;"></div>
 
     <script src="{% static 'game/js/main.js' %}"></script>
 </body>
