@@ -92,14 +92,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 cell.style.borderColor = "#f57f17";
             } else {
                 // La letra no existe (Gris oscuro de consola)
-                cell.style.backgroundColor = "#262626";
-                cell.style.borderColor = "#404040";
+                cell.style.backgroundColor = "#671212";
+                cell.style.borderColor = "#671212";
             }
         }
 
         // Comprobamos si ganó
         if (guess === targetWord) {
-            alert("¡TRANSMISIÓN DESCIFRADA CON ÉXITO! Has adivinado el objeto astronómico.");
+            alert("!MISIÓN CUMPLIDA! Has adivinado el objeto astronómico.");
             endGame();
             return;
         }
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Comprobamos si se quedó sin intentos
         if (currentAttempt >= maxAttempts) {
-            alert(`CONEXIÓN PERDIDA. La palabra correcta era: ${targetWord}`);
+            alert(`MISIÓN FALLIDA. La palabra correcta era: ${targetWord}`);
             endGame();
         }
     }

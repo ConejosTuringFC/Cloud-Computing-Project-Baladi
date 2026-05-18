@@ -6,14 +6,29 @@ import re
 # Create your views here.
 def get_target_word(raw_title: str):
     ignored_words = {"THE", "A", "AN", "OF", "IN", "ON"}
+    aim_words = ["GALAXY", "NEBULA", "PLANET", "STAR", "COMET", "ASTEROID", "BLACKHOLE", "SUPERNOVA","AURORA","SUN"]
     words = [
-        re.sub(r'[^A-Z0-9]', '', word)
+        re.sub(r'[^A-Z]', '', word)
         for word in raw_title.strip().upper().split()
     ]
+    for word in words:
+        if word in aim_words:
+            return word
+        
     target = words[0] if words else "NASA"
     if target in ignored_words and len(words) > 1:
         target = words[1]
-    return target or "NASA"
+    return target
+
+def show_clues(target_word: str, description: str):
+    clue = ""
+    for word in description.split():
+        if word != target_word.lower():
+            clue += word + " "  
+        else:
+            clue += " [???] "
+    return clue
+            
 
 class PlayGameView(View):
     template_name = "game/play.html"
@@ -26,7 +41,7 @@ class PlayGameView(View):
         parametros = {
         "api_key": API_KEY,
         "thumbs": True,
-        "date": "2010-03-03",  #CAMBIAMOS LA FECHA PARA PRUEBAS
+        #  "date": "2026-05-16",  #CAMBIAMOS LA FECHA PARA PRUEBAS
         }
         
         # VARIABLES POR DEFECTO EN CASO DE QUE LA PETICIÓN LLEGUE A FALLAR (sugerencia de IA)
@@ -62,13 +77,15 @@ class PlayGameView(View):
             print(f"Error en la conexion: {e}")
         
         target_word = get_target_word(titulo)
+        clues = show_clues(target_word=target_word, description=explicacion)
         word_length = len(target_word)
             
         context = {
             "img_url": url_imagen,
             "title_target": target_word,
             "date":fecha,
-            "explanation": explicacion,
+            # "explanation": explicacion,
+            "clues": clues,
             "word_length": word_length,
         }
     
