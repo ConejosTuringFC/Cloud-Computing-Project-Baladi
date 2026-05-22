@@ -21,4 +21,5 @@ urlpatterns = [
     path('plugin/', include('plugin.urls')), # Ruta al plugin
     path('admin/', admin.site.urls),
     path('game/', include('game.urls')), # Ruta a la aplicación de juego
+    path('', include('core.urls')), # Ruta a la aplicación core para la página de inicio
 ]
