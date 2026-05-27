@@ -28,7 +28,9 @@ def show_clues(target_word: str, description: str):
         else:
             clue += " [???] "
     return clue
-            
+
+# def instrucciones(request):
+#     return render(request, 'instrucciones.html')
 
 class PlayGameView(View):
     template_name = "game/play.html"

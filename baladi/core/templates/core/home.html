@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ titulo }}</title>
+  <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+</head>
+<body>
+
+  <nav>
+    <a href="https://github.com/ConejosTuringFC/Cloud-Computing-Project-Baladi" class="nav-link" target="_blank">GitHub</a>
+  </nav>
+
+  <main>
+    <h1 class="hero-title">
+      Bienvenido<br>
+      Esta es nuestra Home Page
+    </h1>
+    <a href="/game/play/" class="btn-game">Baladí Guesser</a>
+  </main>
+
+</body>
+</html>
+
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
@@ -8,6 +40,6 @@
     <h1>{{ titulo }}</h1>
     <p>Esta es mi página de inicio.</p>
     <h2>Microservicios</h2>
-    <p><a href="/plugin/67/api/">Ir al microservicio</a></p>
+    <p><a href="/game/play/">Ir al microservicio</a></p>
 </body>
-</html>
+</html> {% endcomment %}
