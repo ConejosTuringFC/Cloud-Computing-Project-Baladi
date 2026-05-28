@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600&display=swap');
+
+:root {
+  --purple-dark: #2d1b4e;
+  --purple-mid:  #3b2068;
+  --teal-mid:    #0d5c6e;
+  --teal-light:  #1a9aaa;
+  --btn-bg:      rgba(58, 100, 200, 0.55);
+  --btn-border:  #5b8af0;
+  --text-main:   #dce8f0;
+  --navbar-bg:   rgba(28, 14, 50, 0.88);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 300;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #1a0d35;
+  background-image:
+    linear-gradient(
+      135deg,
+      var(--purple-dark) 0%,
+      var(--purple-mid)  35%,
+      #1a3a5c            60%,
+      var(--teal-mid)    80%,
+      var(--teal-light)  100%
+    ),
+    url("{% static 'core/images/background.jpg' %}");
+  background-blend-mode: normal, overlay;
+  background-size: cover, 120px 120px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 2.5rem;
+  height: 56px;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: var(--text-main);
+  animation: fadeIn 0.8s ease both;
+}
+
+.btn-game {
+  display: inline-block;
+  background: var(--btn-bg);
+  color: var(--text-main);
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  padding: 1.1rem 3.5rem;
+  border: 2px solid var(--btn-border);
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, transform 0.15s;
+  animation: fadeIn 0.9s ease 0.2s both;
+}
+
+.btn-game:hover {
+  background: rgba(80, 120, 220, 0.75);
+  border-color: #88aaff;
+  transform: translateY(-2px);
+}
+
+.btn-game:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

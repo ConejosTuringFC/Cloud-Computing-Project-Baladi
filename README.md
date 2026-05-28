@@ -3,49 +3,14 @@ Our cloud computing project at National Autonomous University of México.
 Baladi is an online game in which the player has to guess the name of the astronomical object shown on the NASA's Astronomy Picture Of the Day.
 In order to guess the answer, the player has access to the picture and the description of the astronomical object they're looking at. The picture and description change daily, so there's a new game each day. 
 
+
+This project seeks to implement the NASA's API called APOD and deploy it in a funny way using Django as the backend framework. Here are the general steps:
+
+- NASA's APOD API provides a daily astronomical image along with its title and description.
+- We process the data using Python to extract the "target word" from the image title, prioritizing known astronomical objects such as galaxy, nebula, aurora, and others.
+- The description is presented to the player with the target word hidden, serving as the main clue to solve the puzzle.
+
 ## Members
 - Bialy Calderon - bialycalderonm@gmail.com
 - Christian Morales - chrisimg06@gmail.com
 - Jesus Almaguer - correodefinitivo97@gmail.com
-
-
-This project pretends to use the NASA's API called APOD and show the astronomy picture of the day.
-
-To better understand the project's architecture, here is a breakdown of the primary execution flow:
-
-
-```python
-import requests
-
-URL = "https://api.nasa.gov/planetary/apod"
-API_KEY = "Ly4WNI3SbtbqVch7GXNzn0MpJ5fzP2dfMBjdCzxL"
-
-parametros = {
-    "api_key": API_KEY,
-    "thumbs": True
-}
-
-try:
-
-    respuesta = requests.get(URL, params = parametros)
-    respuesta.raise_for_status()
-
-    datos = respuesta.json()
-
-    titulo = datos.get("title")
-    fecha = datos.get("date")
-    url_imagen = datos.get("url")
-    explicacion = datos.get("explanation")
-
-    print(f"--- {titulo} ({fecha}) ---")
-    print(f"Url de la imagen: {url_imagen}")
-    print(f"\nDEscripcion : {explicacion}")
-
-except requests.exceptions.RequestException as e:
-    print(f"Error en la conexion: {e}")
-
-if datos.get("media_type") == "image":
-    imagen_bits = requests.get(url_imagen).content
-    with open("foto_nasa_dia.jpg", "wb") as archivo:
-        archivo.write(imagen_bits)
-```
