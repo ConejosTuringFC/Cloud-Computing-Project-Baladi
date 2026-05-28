@@ -24,10 +24,11 @@ def show_clues(target_word: str, description: str):
     clue = ""
     for word in description.split():
         if word != target_word.lower():
-            clue += word + " "  
+            clue += word + " "
         else:
             clue += " [???] "
     return clue
+
             
 
 class PlayGameView(View):
