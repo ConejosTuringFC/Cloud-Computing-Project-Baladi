@@ -23,14 +23,13 @@ def get_target_word(raw_title: str):
 def show_clues(target_word: str, description: str):
     clue = ""
     for word in description.split():
-        if word != target_word.lower():
+        clean_word = re.sub(r'[^a-zA-Z]', '', word)
+        
+        if clean_word.lower() != target_word.lower():
             clue += word + " "  
         else:
             clue += " [???] "
     return clue
-
-# def instrucciones(request):
-#     return render(request, 'instrucciones.html')
 
 class PlayGameView(View):
     template_name = "game/play.html"
