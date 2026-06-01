@@ -77,7 +77,7 @@ The development followed a local-first approach: all features were built and val
 
 ## Results
  
-The application successfully fetches a new astronomical image and description from NASA's APOD API every day and presents it as a playable word-guessing game. The target word extraction, clue generation, and Wordle-style feedback system all work correctly across tested cases. The deployment pipeline from local development to the EC2 production instance was validated end-to-end.
+The application successfully fetches a new astronomical image and description from NASA's APOD API every day and presents it as a playable word-guessing game. The target word extraction, clue generation, and Wordle-style feedback system all work correctly across tested cases.
 
 ## Conclusions
  
