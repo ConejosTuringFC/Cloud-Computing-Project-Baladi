@@ -18,7 +18,7 @@ To better understand the project's architecture, here is a breakdown of the prim
 import requests
 
 URL = "https://api.nasa.gov/planetary/apod"
-API_KEY = "Ly4WNI3SbtbqVch7GXNzn0MpJ5fzP2dfMBjdCzxL"
+API_KEY = ""
 
 parametros = {
     "api_key": API_KEY,
