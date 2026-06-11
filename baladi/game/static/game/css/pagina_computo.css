@@ -165,3 +165,84 @@ footer {
 .explanation-box::-webkit-scrollbar-thumb {
     background: #333333;
 }
+
+/* Pantalla de instrucciones */
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/Galaxy.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.intro-panel {
+    background-color: rgba(0, 0, 0, 0.75);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 50px 60px;
+    max-width: 700px;
+    width: 90%;
+    text-align: left;
+}
+
+.intro-panel h1 {
+    text-align: center;
+    letter-spacing: 5px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.intro-panel h2 {
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    color: var(--text-dim);
+}
+
+.intro-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 35px 0;
+}
+
+.intro-panel ul li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-main);
+}
+
+.intro-panel ul li:last-child {
+    border-bottom: none;
+}
+
+.rojo   { color: #671212; font-weight: bold; }
+.naranja { color: #f57f17; font-weight: bold; }
+.verde  { color: #2e7d32; font-weight: bold; }
+
+#start-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: var(--bg-color);
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+#start-btn:hover {
+    opacity: 0.8;
+}

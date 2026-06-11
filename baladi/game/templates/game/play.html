@@ -8,6 +8,21 @@
     <link rel="stylesheet" href="{% static 'game/css/pagina_computo.css' %}">
 </head>
 <body>
+    <!-- PANTALLA DE INSTRUCCIONES -->
+    <div id="intro-screen">
+        <div class="intro-panel">
+            <h1>BALADÍ<span class="light">GUESSER</span></h1>
+            <p class="subtitle">Adivina el objeto astronómico del día (Fecha: {{ date }})</p>
+            <h2>Instrucciones</h2>
+            <ul>
+                <li>Tendrás <strong>6 intentos</strong> para adivinar la palabra del día.</li>
+                <li>Las letras en <span class="rojo">rojo</span> significan que la letra <strong>no es parte</strong> de la palabra.</li>
+                <li>Las letras en <span class="naranja">naranja</span> significan que la letra es parte de la palabra pero <strong>no está en su lugar correcto</strong>.</li>
+                <li>Las letras en <span class="verde">verde</span> significan que la letra <strong>está en su lugar indicado</strong>.</li>
+            </ul>
+            <button id="start-btn">COMENZAR MISIÓN</button>
+        </div>
+    </div>
     <div class="game-container">
         <header>
             <h1>BALADÍ<span class="light">GUESSER</span></h1>
@@ -48,5 +63,10 @@
     <div id="game-metadata" data-title="{{ title_target }}" data-length="{{ word_length }}" style="display:none;"></div>
 
     <script src="{% static 'game/js/main.js' %}"></script>
+    <script>
+    document.getElementById("start-btn").addEventListener("click", () => {
+        document.getElementById("intro-screen").style.display = "none";
+    });
+    </script>
 </body>
 </html>

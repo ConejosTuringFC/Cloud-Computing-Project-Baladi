@@ -42,7 +42,7 @@ class PlayGameView(View):
         parametros = {
         "api_key": API_KEY,
         "thumbs": True,
-        #  "date": "2026-05-16",  #CAMBIAMOS LA FECHA PARA PRUEBAS
+         #"date": "2026-05-16",  #CAMBIAMOS LA FECHA PARA PRUEBAS
         }
         
         # VARIABLES POR DEFECTO EN CASO DE QUE LA PETICIÓN LLEGUE A FALLAR (sugerencia de IA)
